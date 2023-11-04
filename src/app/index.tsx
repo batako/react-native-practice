@@ -1,8 +1,8 @@
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
+import CircleButton from '../components/CircleButton'
 import Header from '../components/Header'
 import Memos from '../components/Memos'
-import AddButton from '../components/AddButton'
 
 const Index = (): JSX.Element => {
   return (
@@ -11,7 +11,7 @@ const Index = (): JSX.Element => {
 
       <Memos />
 
-      <AddButton />
+      <CircleButton>+</CircleButton>
     </View>
   )
 }

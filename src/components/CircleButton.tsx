@@ -1,9 +1,15 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-const AddButton = (): JSX.Element => {
+interface Props {
+  children: string
+}
+
+const CircleButton = (props: Props): JSX.Element => {
+  const { children } = props
+
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>+</Text>
+      <Text style={styles.label}>{children}</Text>
     </View>
   )
 }
@@ -34,4 +40,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default AddButton
+export default CircleButton
