@@ -19,6 +19,12 @@
         "react/react-in-jsx-scope": "off",
         // 一行だけのオプジェクトでは末尾のカンマを許容しない
         "@typescript-eslint/comma-dangle": ["error", "only-multiline"],
-        "multiline-ternary": ["error", "always-multiline"]
+        "multiline-ternary": ["error", "always-multiline"],
+        "@typescript-eslint/no-confusing-void-expression": [
+            "error",
+            {
+                "ignoreArrowShorthand": true
+            }
+        ]
     }
 }
