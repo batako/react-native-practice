@@ -9,7 +9,7 @@ const edit = (): void => {
   router.push('/memo/edit')
 }
 
-const Detail = (): JSX.Element => {
+const MemoShow = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Header />
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Detail
+export default MemoShow

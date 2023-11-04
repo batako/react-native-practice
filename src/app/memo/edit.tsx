@@ -6,10 +6,10 @@ import Header from '../../components/Header'
 import Icon from '../../components/Icon'
 
 const save = (): void => {
-  router.push('/memo/list')
+  router.push('/memo')
 }
 
-const Detail = (): JSX.Element => {
+const MemoEdit = (): JSX.Element => {
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
       <Header />
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Detail
+export default MemoEdit

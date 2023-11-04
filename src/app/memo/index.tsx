@@ -10,7 +10,7 @@ const showNew = (): void => {
   router.push('/memo/new')
 }
 
-const List = (): JSX.Element => {
+const MemoIndex = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Header />
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default List
+export default MemoIndex

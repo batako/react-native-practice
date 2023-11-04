@@ -2,7 +2,7 @@ import { View } from 'react-native'
 
 import Memo from './Memo'
 
-const Memos = (): JSX.Element => {
+const MemosIndex = (): JSX.Element => {
   return (
     <View>
       <Memo
@@ -21,4 +21,4 @@ const Memos = (): JSX.Element => {
   )
 }
 
-export default Memos
+export default MemosIndex

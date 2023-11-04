@@ -8,14 +8,14 @@ interface Props {
   date: string
 }
 
-const Memo = (props: Props): JSX.Element => {
+const MemosMemo = (props: Props): JSX.Element => {
   const {
     title,
     date,
   } = props
 
   return (
-    <Link href='/memo/detail' asChild>
+    <Link href='/memo/show' asChild>
       <TouchableOpacity style={styles.container}>
         <View>
           <Text style={styles.title}>{title}</Text>
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Memo
+export default MemosMemo

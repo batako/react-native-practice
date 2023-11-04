@@ -6,10 +6,10 @@ import Header from '../../components/Header'
 
 const login = (): void => {
   // TODO: ログイン
-  router.push('/memo/list')
+  router.push('/memo')
 }
 
-const AuthLogIn = (): JSX.Element => {
+const AuthLogin = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Header />
@@ -24,7 +24,7 @@ const AuthLogIn = (): JSX.Element => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>未登録ですか？</Text>
-          <Link href='/auth/sign_up' asChild>
+          <Link href='/auth/signup' asChild>
             <TouchableOpacity>
               <Text style={styles.footerLink}>こちらでサインアップしてください！</Text>
             </TouchableOpacity>
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default AuthLogIn
+export default AuthLogin

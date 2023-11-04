@@ -4,7 +4,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import Button from '../../components/Button'
 import Header from '../../components/Header'
 
-const AuthSignUp = (): JSX.Element => {
+const AuthSignup = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Header />
@@ -19,7 +19,7 @@ const AuthSignUp = (): JSX.Element => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>登録済みですか？</Text>
-          <Link href='/auth/log_in' asChild>
+          <Link href='/auth/login' asChild>
             <TouchableOpacity>
               <Text style={styles.footerLink}>ログイン</Text>
             </TouchableOpacity>
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default AuthSignUp
+export default AuthSignup
