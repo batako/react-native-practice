@@ -1,8 +1,23 @@
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 import Button from '../../components/Button'
+import { auth } from '../../config'
+
+const save = (email: string, password: string): void => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {
+      console.log(userCredential.user.uid)
+      router.replace('/memo')
+    })
+    .catch(error => {
+      const { code, message } = error
+      console.log(code, message)
+      Alert.alert(message)
+    })
+}
 
 const AuthSignup = (): JSX.Element => {
   const [email, setEmail] = useState('')
@@ -31,7 +46,10 @@ const AuthSignup = (): JSX.Element => {
           textContentType='password'
         />
 
-        <Button label='送信' />
+        <Button
+          label='登録'
+          onPress={() => save(email, password)}
+        />
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>登録済みですか？</Text>
