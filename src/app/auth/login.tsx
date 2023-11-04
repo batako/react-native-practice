@@ -5,7 +5,7 @@ import Button from '../../components/Button'
 
 const login = (): void => {
   // TODO: ログイン
-  router.push('/memo')
+  router.replace('/memo')
 }
 
 const AuthLogin = (): JSX.Element => {

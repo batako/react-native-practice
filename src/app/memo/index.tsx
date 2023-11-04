@@ -1,8 +1,10 @@
-import { router } from 'expo-router'
-import { StyleSheet, View } from 'react-native'
+import { router, useNavigation } from 'expo-router'
+import { useEffect } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
+import LogoutButton from '../../components/LogoutButton'
 import Memos from '../../components/Memos'
 
 const showNew = (): void => {
@@ -10,6 +12,14 @@ const showNew = (): void => {
 }
 
 const MemoIndex = (): JSX.Element => {
+  const navigation = useNavigation()
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <LogoutButton />
+    })
+  }, [])
+
   return (
     <View style={styles.container}>
       <Memos />
