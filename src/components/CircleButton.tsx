@@ -3,16 +3,21 @@ import { StyleSheet, Text, TouchableOpacity, View, type ViewStyle } from 'react-
 interface Props {
   children: JSX.Element
   style?: ViewStyle
+  onPress?: () => void
 }
 
 const CircleButton = (props: Props): JSX.Element => {
   const {
     children,
     style,
+    onPress,
   } = props
 
   return (
-    <TouchableOpacity style={[styles.container, style]}>
+    <TouchableOpacity
+      style={[styles.container, style]}
+      onPress={onPress}
+    >
       <Text style={styles.label}>{children}</Text>
     </TouchableOpacity>
   )

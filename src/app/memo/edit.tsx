@@ -1,8 +1,13 @@
+import { router } from 'expo-router'
 import { KeyboardAvoidingView, StyleSheet, TextInput, View } from 'react-native'
 
 import CircleButton from '../../components/CircleButton'
 import Header from '../../components/Header'
 import Icon from '../../components/Icon'
+
+const save = (): void => {
+  router.push('/memo/list')
+}
 
 const Detail = (): JSX.Element => {
   return (
@@ -17,7 +22,7 @@ const Detail = (): JSX.Element => {
         />
       </View>
 
-      <CircleButton>
+      <CircleButton onPress={save}>
         <Icon name='check' size={40} />
       </CircleButton>
     </KeyboardAvoidingView>

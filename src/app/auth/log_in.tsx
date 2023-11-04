@@ -1,7 +1,13 @@
+import { Link, router } from 'expo-router'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 import Button from '../../components/Button'
 import Header from '../../components/Header'
+
+const login = (): void => {
+  // TODO: ログイン
+  router.push('/memo/list')
+}
 
 const AuthLogIn = (): JSX.Element => {
   return (
@@ -14,13 +20,15 @@ const AuthLogIn = (): JSX.Element => {
         <TextInput style={styles.input} value='メールアドレス' />
         <TextInput style={styles.input} value='パスワード' />
 
-        <Button>送信</Button>
+        <Button label='送信' onPress={login} />
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>未登録ですか？</Text>
-          <TouchableOpacity>
-            <Text style={styles.footerLink}>こちらでサインアップしてください！</Text>
-          </TouchableOpacity>
+          <Link href='/auth/sign_up' asChild>
+            <TouchableOpacity>
+              <Text style={styles.footerLink}>こちらでサインアップしてください！</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </View>

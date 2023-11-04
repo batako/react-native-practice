@@ -1,3 +1,4 @@
+import { Link } from 'expo-router'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 import Button from '../../components/Button'
@@ -14,13 +15,15 @@ const AuthSignUp = (): JSX.Element => {
         <TextInput style={styles.input} value='メールアドレス' />
         <TextInput style={styles.input} value='パスワード' />
 
-        <Button>送信</Button>
+        <Button label='送信' />
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>登録済みですか？</Text>
-          <TouchableOpacity>
-            <Text style={styles.footerLink}>ログイン</Text>
-          </TouchableOpacity>
+          <Link href='/auth/log_in' asChild>
+            <TouchableOpacity>
+              <Text style={styles.footerLink}>ログイン</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </View>

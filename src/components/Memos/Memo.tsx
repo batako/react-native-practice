@@ -1,3 +1,4 @@
+import { Link } from 'expo-router'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import Icon from '../Icon'
@@ -14,19 +15,21 @@ const Memo = (props: Props): JSX.Element => {
   } = props
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.date}>{date}</Text>
-      </View>
-      <TouchableOpacity>
-        <Icon
-          name='delete'
-          size={40}
-          color='#B0B0B0'
-        />
+    <Link href='/memo/detail' asChild>
+      <TouchableOpacity style={styles.container}>
+        <View>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.date}>{date}</Text>
+        </View>
+        <TouchableOpacity>
+          <Icon
+            name='delete'
+            size={40}
+            color='#B0B0B0'
+          />
+        </TouchableOpacity>
       </TouchableOpacity>
-    </View>
+    </Link>
   )
 }
 
