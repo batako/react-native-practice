@@ -2,13 +2,10 @@ import { Link } from 'expo-router'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 import Button from '../../components/Button'
-import Header from '../../components/Header'
 
 const AuthSignup = (): JSX.Element => {
   return (
     <View style={styles.container}>
-      <Header />
-
       <View style={styles.inner}>
         <Text style={styles.title}>新規登録</Text>
 

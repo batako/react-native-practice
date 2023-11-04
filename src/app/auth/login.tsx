@@ -2,7 +2,6 @@ import { Link, router } from 'expo-router'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 import Button from '../../components/Button'
-import Header from '../../components/Header'
 
 const login = (): void => {
   // TODO: ログイン
@@ -12,8 +11,6 @@ const login = (): void => {
 const AuthLogin = (): JSX.Element => {
   return (
     <View style={styles.container}>
-      <Header />
-
       <View style={styles.inner}>
         <Text style={styles.title}>ログイン</Text>
 
