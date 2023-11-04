@@ -1,7 +1,7 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
-import Header from '../../components/Header'
 import Button from '../../components/Button'
+import Header from '../../components/Header'
 
 const AuthSignUp = (): JSX.Element => {
   return (
@@ -18,7 +18,9 @@ const AuthSignUp = (): JSX.Element => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>登録済みですか？</Text>
-          <Text style={styles.footerLink}>ログイン</Text>
+          <TouchableOpacity>
+            <Text style={styles.footerLink}>ログイン</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

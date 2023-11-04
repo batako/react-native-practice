@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+
+import Icon from '../Icon'
 
 interface Props {
   title: string
@@ -17,9 +19,13 @@ const Memo = (props: Props): JSX.Element => {
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.date}>{date}</Text>
       </View>
-      <View>
-        <Text>X</Text>
-      </View>
+      <TouchableOpacity>
+        <Icon
+          name='delete'
+          size={40}
+          color='#B0B0B0'
+        />
+      </TouchableOpacity>
     </View>
   )
 }
