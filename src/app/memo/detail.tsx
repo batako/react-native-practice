@@ -6,7 +6,7 @@ import Icon from '../../components/Icon'
 
 const Detail = (): JSX.Element => {
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
 
       <View style={styles.memoHeader}>
