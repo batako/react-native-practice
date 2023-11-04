@@ -4,6 +4,8 @@ import CircleButton from '../../components/CircleButton'
 import Header from '../../components/Header'
 import Memos from '../../components/Memos'
 
+import { Feather } from '@expo/vector-icons'
+
 const List = (): JSX.Element => {
   return (
     <View style={styles.container}>
@@ -11,7 +13,9 @@ const List = (): JSX.Element => {
 
       <Memos />
 
-      <CircleButton>+</CircleButton>
+      <CircleButton>
+        <Feather name='plus' size={40} />
+      </CircleButton>
     </View>
   )
 }
