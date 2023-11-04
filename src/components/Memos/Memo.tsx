@@ -1,11 +1,21 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-const Memo = (): JSX.Element => {
+interface Props {
+  title: string
+  date: string
+}
+
+const Memo = (props: Props): JSX.Element => {
+  const {
+    title,
+    date,
+  } = props
+
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.title}>買い物リスト</Text>
-        <Text style={styles.date}>2023年11月03日 10:00</Text>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.date}>{date}</Text>
       </View>
       <View>
         <Text>X</Text>
