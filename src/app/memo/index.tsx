@@ -1,6 +1,6 @@
 import { router, useNavigation } from 'expo-router'
 import { useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
@@ -14,6 +14,7 @@ const showNew = (): void => {
 const MemoIndex = (): JSX.Element => {
   const navigation = useNavigation()
 
+  // ナビゲーションにログアウトボタンを追加
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => <LogoutButton />

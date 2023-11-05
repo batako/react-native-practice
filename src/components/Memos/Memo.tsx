@@ -1,26 +1,25 @@
 import { Link } from 'expo-router'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
+import { type MemoType } from '../../../types/memo'
 import Icon from '../Icon'
 
 interface Props {
-  title: string
-  date: string
+  memo: MemoType
 }
 
 const MemosMemo = (props: Props): JSX.Element => {
-  const {
-    title,
-    date,
-  } = props
+  const { memo } = props
+  const dateString = memo.updatedAt?.toDate()?.toLocaleString('ja-JP')
 
   return (
     <Link href='/memo/show' asChild>
       <TouchableOpacity style={styles.container}>
         <View>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.date}>{date}</Text>
+          <Text style={styles.title}>{memo.bodyText}</Text>
+          <Text style={styles.date}>{dateString}</Text>
         </View>
+
         <TouchableOpacity>
           <Icon
             name='delete'

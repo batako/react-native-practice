@@ -3,6 +3,7 @@ import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 
+import { type MemoType } from '../../../types/memo'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 import KeyboardAvoidingView from '../../components/KeyboardAvoidingView'
@@ -12,12 +13,14 @@ const save = (bodyText: string): void => {
   if (bodyText === '') return
   if (auth.currentUser === null) return
 
+  const saveParams: Omit<MemoType, 'id'> = {
+    bodyText,
+    updatedAt: Timestamp.fromDate(new Date()),
+  }
+
   addDoc(
     collection(db, `users/${auth.currentUser.uid}/memos`),
-    {
-      bodyText,
-      updateAt: Timestamp.fromDate(new Date()),
-    }
+    saveParams
   )
     .then((docRef) => {
       console.log('success', docRef.id)
