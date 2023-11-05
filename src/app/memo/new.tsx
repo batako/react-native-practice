@@ -37,8 +37,9 @@ const MemoNew = (): JSX.Element => {
         <TextInput
           style={styles.input}
           value={bodyText}
-          multiline
           onChangeText={text => setBodyText(text)}
+          autoFocus
+          multiline
         />
       </View>
 
