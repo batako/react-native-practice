@@ -1,11 +1,33 @@
 import { Link } from 'expo-router'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { deleteDoc, doc } from 'firebase/firestore'
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import { type MemoType } from '../../../types/memo'
+import { auth, db } from '../../config'
 import Icon from '../Icon'
 
 interface Props {
   memo: MemoType
+}
+
+const destroy = (id: string): void => {
+  if (auth.currentUser === null) return
+
+  const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
+
+  Alert.alert('メモを削除します', 'よろしいですか？', [
+    {
+      text: 'キャンセル',
+    },
+    {
+      text: '削除する',
+      style: 'destructive',
+      onPress: () => {
+        deleteDoc(ref)
+          .catch(() => Alert.alert('削除に失敗しました。'))
+      },
+    },
+  ])
 }
 
 const MemosMemo = (props: Props): JSX.Element => {
@@ -28,7 +50,7 @@ const MemosMemo = (props: Props): JSX.Element => {
           <Text style={styles.date}>{dateString}</Text>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => destroy(memo.id)}>
           <Icon
             name='delete'
             size={40}
