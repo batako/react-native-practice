@@ -1,11 +1,12 @@
 import { router, useLocalSearchParams } from 'expo-router'
 import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
-import { Alert, KeyboardAvoidingView, StyleSheet, TextInput, View } from 'react-native'
+import { Alert, StyleSheet, TextInput, View } from 'react-native'
 
 import { type MemoType } from '../../../types/memo'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
+import KeyboardAvoidingView from '../../components/KeyboardAvoidingView'
 import { auth, db } from '../../config'
 
 const save = (id: string, bodyText: string): void => {
@@ -38,8 +39,6 @@ const MemoEdit = (): JSX.Element => {
     getDoc(ref)
       .then(docRef => {
         const RemoteBodyText = docRef?.data()?.bodyText
-        // const { bodyText } = docRef.data() as MemoType
-
         setBodyText(RemoteBodyText)
       })
       .catch(error => {
@@ -48,7 +47,7 @@ const MemoEdit = (): JSX.Element => {
   }, [])
 
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
