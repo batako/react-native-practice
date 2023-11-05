@@ -16,7 +16,12 @@ const MemosMemo = (props: Props): JSX.Element => {
     <Link href='/memo/show' asChild>
       <TouchableOpacity style={styles.container}>
         <View>
-          <Text style={styles.title}>{memo.bodyText}</Text>
+          <Text
+            style={styles.title}
+            numberOfLines={1}
+          >
+            {memo.bodyText}
+          </Text>
           <Text style={styles.date}>{dateString}</Text>
         </View>
 
