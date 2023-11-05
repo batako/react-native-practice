@@ -1,10 +1,11 @@
 import { router } from 'expo-router'
-import { Timestamp, addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { useState } from 'react'
-import { KeyboardAvoidingView, StyleSheet, TextInput, View } from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
+import KeyboardAvoidingView from '../../components/KeyboardAvoidingView'
 import { auth, db } from '../../config'
 
 const save = (bodyText: string): void => {
@@ -31,7 +32,7 @@ const MemoNew = (): JSX.Element => {
   const [bodyText, setBodyText] = useState('')
 
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
