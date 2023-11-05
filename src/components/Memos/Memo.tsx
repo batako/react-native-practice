@@ -13,7 +13,10 @@ const MemosMemo = (props: Props): JSX.Element => {
   const dateString = memo.updatedAt?.toDate()?.toLocaleString('ja-JP')
 
   return (
-    <Link href='/memo/show' asChild>
+    <Link
+      href={{ pathname: '/memo/show', params: { id: memo.id } }}
+      asChild
+    >
       <TouchableOpacity style={styles.container}>
         <View>
           <Text

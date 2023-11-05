@@ -1,32 +1,58 @@
-import { router } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
+import { doc, onSnapshot } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
+import { type MemoType } from '../../../types/memo'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
+import { auth, db } from '../../config'
 
-const edit = (): void => {
-  router.push('/memo/edit')
+const edit = (id: string): void => {
+  router.push({ pathname: '/memo/edit', params: { id } })
 }
 
 const MemoShow = (): JSX.Element => {
+  const id = String(useLocalSearchParams().id)
+  const [memo, setMemo] = useState<MemoType | null>(null)
+
+  useEffect(() => {
+    if (auth.currentUser === null) return
+    const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id))
+    const unsubscribe = onSnapshot(ref, memoDoc => {
+      const { bodyText, updatedAt } = memoDoc.data() as MemoType
+      setMemo({
+        id: memoDoc.id,
+        bodyText,
+        updatedAt,
+      })
+    })
+    return unsubscribe
+  })
+
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
-        <Text style={styles.memoTitle}>買い物リスト</Text>
-        <Text style={styles.memoDate}>2023年10月1日 10:00</Text>
+        <Text
+          style={styles.memoTitle}
+          numberOfLines={1}
+        >
+          {memo?.bodyText}
+        </Text>
+        <Text style={styles.memoDate}>
+          {memo?.updatedAt.toDate()?.toLocaleString('ja-JP')}
+        </Text>
       </View>
 
       <ScrollView style={styles.memoBody}>
         <Text style={styles.memoText}>
-          買い物リスト
-          書体やレイアウトなどを確認に用います。
-          本文用なので使い方を間違えると不自然に見えることもありますので注意。
+          {memo?.bodyText}
         </Text>
       </ScrollView>
 
       <CircleButton
         style={{ top: 60, bottom: 'auto' }}
-        onPress={edit}
+        onPress={() => edit(id)}
       >
         <Icon
           name='pencil'
