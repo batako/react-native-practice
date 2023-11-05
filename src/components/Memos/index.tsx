@@ -1,6 +1,6 @@
 import { collection, onSnapshot, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
-import { View } from 'react-native'
+import { FlatList } from 'react-native'
 
 import { type MemoType } from '../../../types/memo'
 import { auth, db } from '../../config'
@@ -17,7 +17,6 @@ const MemosIndex = (): JSX.Element => {
     const unsbscribe = onSnapshot(q, snapshot => {
       const remoteMemos: MemoType[] = []
       snapshot.forEach(doc => {
-        console.log('memo', doc.data())
         const { bodyText, updatedAt } = doc.data()
         remoteMemos.push({
           id: doc.id,
@@ -33,9 +32,10 @@ const MemosIndex = (): JSX.Element => {
   }, [])
 
   return (
-    <View>
-      {memos.map(memo => <Memo memo={memo} key={memo.id} />)}
-    </View>
+    <FlatList
+      data={memos}
+      renderItem={({ item }) => <Memo memo={item} key={item.id} />}
+    />
   )
 }
 
